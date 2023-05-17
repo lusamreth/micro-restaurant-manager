@@ -54,7 +54,6 @@ int Restaurant::getRate() {
   int acc = 0;
   int ratingScore;
 
-  cout << "vec size" << this->rate_list.size() << endl;
   for (int i = 0; i < vecSize; i++) {
     ratingScore = this->rate_list[i].getScore();
     acc += ratingScore;
