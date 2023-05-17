@@ -86,23 +86,30 @@ void addMenuItem(vector<Restaurant> &restaurant_list) {
     return;
   }
 
-  if (choice >= 1 && choice <= restaurant_list.size()) {
+  if (choice >= 0 && choice <= restaurant_list.size()) {
     string name, description;
     float price;
 
     cout << "Enter name of menu item: ";
     cin.ignore();
     getline(cin, name);
+    if (checkEmptyInput(name)) {
+      return;
+    }
 
     cout << "Enter price of menu item: $";
     cin >> price;
+
     cout << "Enter description of menu item: ";
+    getline(cin, description);
+    if (checkEmptyInput(description)) {
+      return;
+    }
     cin.ignore();
 
-    getline(cin, description);
     MenuItem new_item(name, price, description);
 
-    restaurant_list[choice - 1].addMenuItem(new_item);
+    restaurant_list[choice].addMenuItem(new_item);
 
     cout << "\n";
     cout << "New item info :" << endl;
