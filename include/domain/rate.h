@@ -3,7 +3,7 @@
 
 class Rate {
 private:
-  float score;
+  int score;
 
 public:
   Rate(int score);

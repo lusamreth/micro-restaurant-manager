@@ -3,7 +3,6 @@ project('final-project', 'cpp',
   default_options : ['warning_level=3', 'cpp_std=c++14'])
 
 add_global_arguments('-DSOME_TOKEN=value', language : 'cpp')
-glib_dep = dependency('glib-2.0')
 
 project_header_files = []
 project_sources = []

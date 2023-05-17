@@ -13,6 +13,7 @@ private:
   std::string address;
   std::vector<MenuItem> menu;
   string phone_number;
+  std::vector<Rate> rate_list;
 
 public:
   // Constructors
@@ -22,14 +23,18 @@ public:
 
   // Accessors and mutators
   std::string getName();
-  void setName(std::string name);
   std::string getLocation();
+
+  void setName(std::string name);
   void setAddress(std::string address);
+
   std::vector<MenuItem> getMenuItems();
-  string toString();
   void addMenuItem(MenuItem menu);
-  float getRate();
-  float addRate(Rate rate);
+
+  string toString();
+
+  int getRate();
+  void addRate(Rate rate);
 };
 
 #endif // RESTAURANT_H

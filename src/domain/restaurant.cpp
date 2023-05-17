@@ -1,5 +1,6 @@
 #include "domain/restaurant.h"
 #include "domain/menu.h"
+#include <pthread.h>
 using namespace std;
 
 // Default constructor
@@ -17,7 +18,9 @@ Restaurant::Restaurant(string name, string address, string phone_number) {
   this->phone_number = phone_number;
 
   vector<MenuItem> emptyMenu = {};
+  vector<Rate> emptyRateList = {};
   this->menu = emptyMenu;
+  this->rate_list = emptyRateList;
 }
 
 std::string Restaurant::getName() { return name; }
@@ -41,4 +44,18 @@ string Restaurant::toString() {
 
   rest_template = name_template + addrs_str + phone_number;
   return rest_template;
+}
+
+void Restaurant::addRate(Rate rate) { this->rate_list.push_back(rate); }
+int Restaurant::getRate() {
+  int vecSize = this->rate_list.size();
+  int acc = 0;
+  int ratingScore;
+
+  for (int i = 0; i < vecSize; i++) {
+    ratingScore = this->rate_list[i].getScore();
+    acc += ratingScore;
+  }
+
+  return acc / vecSize;
 }
