@@ -12,7 +12,8 @@ subdir('include')
 subdir('src')
 
 final_project_static_lib = [
-  domain_lib
+  domain_lib,
+  display_lib
 ]
 executable('final-project',
            main_source ,

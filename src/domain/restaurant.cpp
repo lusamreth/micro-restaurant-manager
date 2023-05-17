@@ -1,5 +1,6 @@
 #include "domain/restaurant.h"
 #include "domain/menu.h"
+#include <iostream>
 #include <pthread.h>
 using namespace std;
 
@@ -8,7 +9,6 @@ Restaurant::Restaurant() {
   name = "";
   address = "";
   phone_number = "";
-  menu = {};
 }
 
 // Constructor with arguments
@@ -19,6 +19,7 @@ Restaurant::Restaurant(string name, string address, string phone_number) {
 
   vector<MenuItem> emptyMenu = {};
   vector<Rate> emptyRateList = {};
+
   this->menu = emptyMenu;
   this->rate_list = emptyRateList;
 }
@@ -38,20 +39,22 @@ void Restaurant::addMenuItem(MenuItem item) { this->menu.push_back(item); }
 string Restaurant::toString() {
   string rest_template = "";
 
-  string name_template = "The restaurant name is called " + this->name + "\n";
+  string name_template = "The restaurant name is called : " + this->name + "\n";
   string addrs_str = "Location : " + this->address + "\n";
   string phone_number_str = "Contact : " + this->phone_number + "\n";
 
-  rest_template = name_template + addrs_str + phone_number;
+  rest_template = name_template + addrs_str + phone_number_str;
   return rest_template;
 }
 
 void Restaurant::addRate(Rate rate) { this->rate_list.push_back(rate); }
+
 int Restaurant::getRate() {
-  int vecSize = this->rate_list.size();
+  unsigned int vecSize = this->rate_list.size();
   int acc = 0;
   int ratingScore;
 
+  cout << "vec size" << this->rate_list.size() << endl;
   for (int i = 0; i < vecSize; i++) {
     ratingScore = this->rate_list[i].getScore();
     acc += ratingScore;
