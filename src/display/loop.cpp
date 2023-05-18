@@ -10,7 +10,6 @@ using namespace std;
 DisplayLoop::DisplayLoop() {}
 
 void DisplayLoop::loop(CommandControl controller) {
-  string command_list;
   int command_choice;
   int continuation = 1;
   while (true && continuation) {
@@ -31,8 +30,6 @@ void DisplayLoop::loop(CommandControl controller) {
     continuation = controller.select(command_choice);
     if (input.compare("END") == 0)
       break;
-    else
-      command_list.append(input);
   }
 }
 
