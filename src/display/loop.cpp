@@ -17,6 +17,11 @@ void DisplayLoop::loop(CommandControl controller) {
     string input;
     cout << "input>";
     getline(cin, input);
+
+    if (input == "") {
+      continue;
+    }
+
     try {
       command_choice = stoi(input);
       /* RestaurantCommandControl(command_choice); */

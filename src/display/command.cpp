@@ -78,7 +78,14 @@ void addMenuItem(vector<Restaurant> &restaurant_list) {
   viewRestaurantList(restaurant_list);
 
   cout << "Choose a restaurant to add menu item: ";
-  cin >> choice_str;
+  /* cin.ignore(); */
+  /* cin >> choice_str; */
+  getline(cin, choice_str);
+
+  /* if (checkEmptyInput(choice_str)) { */
+  /*   return; */
+  /* } */
+
   try {
     choice = stoi(choice_str);
   } catch (exception &e) {
@@ -101,14 +108,14 @@ void addMenuItem(vector<Restaurant> &restaurant_list) {
     cin >> price;
 
     cout << "Enter description of menu item: ";
-    getline(cin, description);
+    cin.ignore();
+    /* getline(cin, description); */
+    cin >> description;
     if (checkEmptyInput(description)) {
       return;
     }
-    cin.ignore();
 
     MenuItem new_item(name, price, description);
-
     restaurant_list[choice].addMenuItem(new_item);
 
     cout << "\n";

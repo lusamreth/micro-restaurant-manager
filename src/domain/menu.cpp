@@ -19,8 +19,8 @@ MenuItem::MenuItem(string name, float price, string description) {
 string MenuItem::toString() {
   string price_str = std::to_string(this->getPrice());
   string item_template =
-      "The item : " + this->getName() + " cost " + price_str + "\n";
-  item_template += "description : " + this->getDescription();
+      "The item : " + this->getName() + "\n" + "cost " + price_str + "\n";
+  item_template += "description : " + this->getDescription() + "\n";
   return item_template;
   /* return this.name + this->description + ; */
 }
